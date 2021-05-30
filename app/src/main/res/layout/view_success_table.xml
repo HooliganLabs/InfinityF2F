@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:id="@+id/MetricMeasurements"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="20cm"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="40cm"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="60cm"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="80cm"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="100cm"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="120cm"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="240cm"
+                    android:textColor="#000000" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/AmericanMeasurements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/Length1"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="8&quot;"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/Length2"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="16&quot;"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="24&quot;"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="32&quot;"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="40&quot;"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="48&quot;"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="96&quot;"
+                    android:textColor="#000000" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/SuccessValueRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/SuccessValue1"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="11"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/SuccessValue2"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="11"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/SuccessValue3"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="20"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/SuccessValue4"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="12"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/SuccessValue5"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="12"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/SuccessValue6"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="12"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/SuccessValue7"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="12"
+                    android:textColor="#000000" />
+
+            </TableRow>
+
+        </TableLayout>
+
+    </FrameLayout>
+
+</layout>
