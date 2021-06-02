@@ -3,6 +3,7 @@ package com.hooliganlabs.infinityftf;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.math.MathUtils;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -83,12 +84,19 @@ public class MainActivity extends AppCompatActivity {
         String metaJsonStr = inputStreamToString(getResources().openRawResource(R.raw.metadata));
         MetaDataModel metaData = new Gson().fromJson(metaJsonStr, MetaDataModel.class);
 
+        // If we find the Combi Rifle in the list, we will jump to that instead
+        int defaultPos = 0;
+
         List<String> weaponNames = new ArrayList<>();
         weapons = new ArrayList<>();
         for(WeaponDataModel weapon : metaData.weapons) {
             if(weapon.distance != null && !weapons.contains(weapon)) {
                 weaponNames.add(weapon.name);
                 weapons.add(weapon);
+
+                if (weapon.name.equals("Combi Rifle")) {
+                    defaultPos = weapons.size()-1;
+                }
             }
         }
 
@@ -125,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
         });
+
+        binding.YourModCard.WeaponSpinner.setSelection(defaultPos);
 
         // Enemy Card
 
@@ -173,6 +183,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
         });
+
+        binding.EnemyModCard.WeaponSpinner.setSelection(defaultPos);
 
         new AlertDialog.Builder(context)
         .setTitle("Always Respect your Opponent!")
@@ -257,7 +269,8 @@ public class MainActivity extends AppCompatActivity {
             Integer weapMod = null;
             int length = CM_LENGTHS[i];
 
-            if(weapon.distance != null) {
+            // Does the weapon have a range band?
+            if(weapon.distance != null) { // Yes, has range bands
                 if (weapon.distance.length1 != null && length <= weapon.distance.length1.length) {
                     weapMod = weapon.distance.length1.mod;
                 } else if (weapon.distance.length2 != null && length <= weapon.distance.length2.length) {
@@ -268,15 +281,19 @@ public class MainActivity extends AppCompatActivity {
                     weapMod = weapon.distance.length4.mod;
                 }
 
-                if(weapMod == null) {
+                if(weapMod == null) { // Not relevant anyway, do not show
                     ((TextView) successTable.SuccessValueRow.getChildAt(i)).setText("-");
                 } else {
-                    if(xVisor && weapMod < 0)
+                    if(xVisor && weapMod < 0) // Adjust negative range bands for XVisor
                         weapMod += 3;
-                    int successValue = weapMod + cov + visMod + mimMod + bs + fts + ma + sa + sf;
+
+                    // When calculating final success value, are the mods within the +/-12 limit?
+                    int modTotal = MathUtils.clamp(weapMod + cov + visMod + mimMod + fts + ma + sa + sf, -12, 12);
+
+                    int successValue = bs + modTotal; // Now add skill
                     ((TextView) successTable.SuccessValueRow.getChildAt(i)).setText(successValue > 0 ? String.valueOf(successValue) : "-");
                 }
-            } else {
+            } else { // No, not relevant for this app
                 ((TextView)successTable.SuccessValueRow.getChildAt(i)).setText("-");
             }
         }
